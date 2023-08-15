@@ -10,3 +10,9 @@ riderModule.iml
 /GameServer/*.dll
 /GameServer/*.ini
 /GameServer/*.exe
+/.idea/.idea.SitServerController.dir/.idea/.gitignore
+/.idea/.idea.SitServerController.dir/.idea/encodings.xml
+/GameServer.zip
+/.idea/.idea.SitServerController.dir/.idea/indexLayout.xml
+/SitServerController.zip
+/.idea/.idea.SitServerController.dir/.idea/vcs.xml
