@@ -1,0 +1,343 @@
+﻿@page "/"
+@using SitServerController.Controllers
+@using SitServerController.Models
+@using System.Diagnostics
+@using Microsoft.AspNetCore.Http.Extensions
+@inject IConfiguration Configuration
+@inject Microsoft.AspNetCore.Components.NavigationManager navigationManager
+
+<MudGrid>
+    <MudItem md="2" xs="2">
+        <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+            <div class="flex-grow-1">
+                <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Server Version</MudText>
+                <div class="d-flex align-center my-1">
+                </div>
+                <MudText Typo="Typo.h4" Class="d-flex justify-center">@_serverVersion</MudText>
+            </div>
+        </MudPaper>
+    </MudItem>
+    <MudItem md="2" xs="2">
+        <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+            <div class="flex-grow-1">
+                <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Login Status</MudText>
+                <div class="d-flex align-center my-1">
+                </div>
+                <MudText Typo="Typo.h4" Class="d-flex justify-center">@_status</MudText>
+            </div>
+        </MudPaper>
+    </MudItem>
+    
+    <MudItem md="3" xs="3">
+        <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+            <div class="flex-grow-1">
+                <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Compatible Game Version</MudText>
+                <div class="d-flex align-center my-1">
+                </div>
+                <MudText Typo="Typo.h4" Class="d-flex justify-center">@_gameVersion</MudText>
+            </div>
+        </MudPaper>
+    </MudItem>
+    <MudItem md="3" xs="3">
+            <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+                <div class="flex-grow-1">
+                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Server Status </MudText>
+                    <div class="d-flex align-center my-1">
+                    </div>
+                     <MudText Typo="Typo.h4" Class="d-flex justify-center">@_serverStatus <MudIcon Icon="@Icons.Material.Filled.ArrowUpward" Color="Color.Primary"></MudIcon></MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+    <MudItem md="2" xs="2">
+        <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+            <div class="flex-grow-1">
+                <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Ram Usage</MudText>
+                <div class="d-flex align-center my-1">
+                </div>
+                <MudText Typo="Typo.h4" Class="d-flex justify-center">@_serverRamUsage MB</MudText>
+            </div>
+        </MudPaper>
+    </MudItem>
+   
+    <MudItem md="12" xs="12">
+            <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.h4" Class="d-flex justify-center">
+                        <MudPaper Elevation="0" Style="background: #191919; color: #968867; width: 100%">
+                            <MudGrid>
+                                <MudItem md="2" xs="2">
+                                    <div class="flex-grow-1">
+                                        <MudButton OnClick="@(() => StartServer())" Style="width: 100%" Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Start Server <MudIcon Icon="@Icons.Material.Filled.Start"></MudIcon></MudButton>
+                                    </div>
+                                </MudItem>
+                                <MudItem md="2" xs="2">
+                                    <div class="flex-grow-1">
+                                        <MudButton OnClick="@(() => RestartServer())" Style="width: 100%"  Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Restart Server <MudIcon Icon="@Icons.Material.Filled.RestartAlt"></MudIcon></MudButton>
+                                    </div>
+                                </MudItem>
+                                <MudItem md="2" xs="2">
+                                    <div class="flex-grow-1">
+                                        <MudButton OnClick="@(() => StopServer())" Style="width: 100%"  Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Stop Server <MudIcon Icon="@Icons.Material.Filled.Stop"></MudIcon></MudButton>
+                                    </div>
+                                </MudItem>
+                            </MudGrid>
+                        </MudPaper>
+                    </MudText>
+                </div>
+            </MudPaper>
+        </MudItem>
+    
+    
+    
+    
+    <MudItem md="12" xs="12">
+        <MudTable class="rounded-lg" @ref="_playerTable" T="PlayerInformation" MultiSelection="true" Items="@PlayerList" Square="@_square" Dense="@_dense" Hover="@_hover" Bordered="@_bordered" Striped="@_striped" Style="background: #191919; padding-left: 2em; padding-right: 2em;">
+            <ToolBarContent>
+                <MudText Typo="Typo.h6">Registered Player List</MudText>
+                <MudSpacer/>
+                <MudTextField @bind-Value="_searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true"
+                              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+            </ToolBarContent>
+            <HeaderContent>
+                <MudTh Style="width: 5em;">Username</MudTh>
+                <MudTh Style="width: 25em;">Nickname</MudTh>
+                <MudTh Style="width: 13em;">Faction</MudTh>
+                <MudTh Style="width: 5em;">Current Level</MudTh>
+                <MudTh Style="width: 6em;">Current EXP</MudTh>
+                <MudTh Style="width: 10em;">Next Level</MudTh>
+                @* <MudTh Style="width: 15em">Max Level</MudTh> *@
+                <MudTh Style="width: 40%">Action Buttons</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Username">@context.Username</MudTd>
+                <MudTd DataLabel="Nickname">@context.Nickname</MudTd>
+                <MudTd DataLabel="Faction">@context.Side</MudTd>
+                <MudTd DataLabel="Current Level">@context.currlvl</MudTd>
+                <MudTd Style="width: 15%" DataLabel="Current Exp">@context.currexp xp</MudTd>
+                <MudTd Style="width: 15%" DataLabel="Next Level">@context.nextlvl xp</MudTd>
+                <MudTd Style="width: 15%" DataLabel="Action Buttons">
+                    <div style="padding: 10px; font-size: 16px;">
+                        <MudButton @onclick="@(() => OpenProfilePage(@context.Username))" Variant="Variant.Filled" Size="Size.Medium" StartIcon="@Icons.Material.Filled.Person" Color="Color.Dark">Details</MudButton>
+                    </div>
+                </MudTd>
+                @* <MudTd DataLabel="Max Level">Max: @context.maxlvl</MudTd> *@
+                
+
+            </RowTemplate>
+
+            <PagerContent>
+                <MudTablePager/>
+            </PagerContent>
+        </MudTable>
+
+        <div class="d-flex flex-wrap mt-4">
+            <MudSwitch @bind-Checked="@_hover" Color="Color.Primary">Hover</MudSwitch>
+            <MudSwitch @bind-Checked="@_dense" Color="Color.Secondary">Dense</MudSwitch>
+            <MudSwitch @bind-Checked="@_striped" Color="Color.Tertiary">Striped</MudSwitch>
+            <MudSwitch @bind-Checked="@_bordered" Color="Color.Warning">Bordered</MudSwitch>
+            <MudSpacer/>
+            <div style="min-width:200px;">
+                <MudText Inline="true">Selected items: @(_selectedItems == null ? "" : string.Join(", ", _selectedItems.OrderBy(x => x.Nickname).Select(x => x.Nickname)))</MudText>
+            </div>
+        </div>
+
+    </MudItem>
+
+
+
+</MudGrid>
+
+@code {
+    private AccountStatus _status;
+    private PlayerInformation[] players;
+    private string _serverVersion;
+    private string _gameVersion;
+    //private string _serverVersion;
+    private int _serverProcessId;
+    private int _serverRamUsage;
+    private Server _server;
+    
+    private string _searchString;
+    private MudTable<PlayerInformation> _playerTable;
+    private bool _square = true;
+    private bool _dense = true;
+    private bool _hover = true;
+    private bool _striped = false;
+    private bool _bordered = false;
+    private HashSet<PlayerInformation> _selectedItems = new HashSet<PlayerInformation>();
+    private IEnumerable<PlayerInformation> PlayerList = new List<PlayerInformation>();
+
+    private bool _serverStatus;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _serverStatus = CheckServerStatus();
+        _server = new Server();
+        if (_serverStatus)
+        {
+            try
+            {
+                await Login();
+                await GetProfiles();
+                GetServerInformation();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        _serverStatus = CheckServerStatus();
+        
+        StartLoop();
+    }
+
+    async Task Login()
+    {
+        LoginModel loginModel = new LoginModel();
+        loginModel.Password = _server.LoginPassword;
+        loginModel.Username = _server.LoginUsername;
+        
+    // Console.WriteLine("URL: " + Configuration.GetSection("BackendServerURL").Value);
+        
+        
+        _status = await AccountManager.LoginAsync(loginModel);
+    }
+
+    async Task GetProfiles()
+    {
+        players = AccountManager.GetExistingProfiles();
+        PlayerList = players.ToList();
+    }
+
+    void GetServerInformation()
+    {
+        _serverVersion = ServerManager.GetVersion();
+        _gameVersion = ServerManager.GetCompatibleGameVersion();
+    }
+
+    bool CheckServerStatus()
+    {
+        try
+        {
+            // To find the name of the process
+            // foreach (var process in Process.GetProcesses())
+            // {
+            //     Console.WriteLine(process.ProcessName);
+            // }
+            
+            Process[] processes = Process.GetProcessesByName("Aki.Server");
+            
+            Console.WriteLine("Test: " + processes.Length);
+            foreach (var proc in processes)
+            {
+                Console.WriteLine("Test: " + proc.Id);
+            }
+            _serverProcessId = processes[0].Id;
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    void UpdateRamUsage()
+    {
+        if (_serverStatus == true)
+        {
+            try
+            {
+                int memsize = 0;
+                Process proc = Process.GetProcessById(_serverProcessId);
+                PerformanceCounter counter = new PerformanceCounter();
+                counter.CategoryName = "Process";
+                counter.CounterName = "Working Set - Private";
+                counter.InstanceName = proc.ProcessName;
+                memsize = Convert.ToInt32(counter.NextValue()) / (int)(1024);
+                _serverRamUsage = memsize/1024;
+                
+                Console.WriteLine("Memory: " + memsize/1024 + "MB");
+                
+                counter.Close();
+                counter.Dispose();
+                
+                StateHasChanged();
+            }
+            catch
+            {
+                
+            }
+        }
+        
+    }
+
+    private void OpenProfilePage(string username)
+    {
+        navigationManager.NavigateTo($"/PlayerInfo/{username}");
+    }
+
+    void StartServer()
+    {
+        Console.WriteLine("Starting Server");
+        CheckServerStatus();
+        try
+        {
+            if (_serverStatus == false)
+            {
+                var path = Environment.CurrentDirectory + "\\GameServer\\Lol";
+
+                Process proc = new();
+                proc.StartInfo.UseShellExecute = true;
+                proc.StartInfo.FileName = $@"{path}";
+                
+                Console.WriteLine(proc.StartInfo.FileName);
+                Console.WriteLine(path);
+                
+                proc.Start();
+                
+                CheckServerStatus();
+            }
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    void StopServer()
+    {
+        try
+        {
+            Process.GetProcessById(_serverProcessId).Kill();
+            CheckServerStatus();
+        }
+        catch (Exception exc)
+        {
+            Console.WriteLine(exc.Message);
+        }
+        StateHasChanged();
+    }
+
+    void RestartServer()
+    {
+        CheckServerStatus();
+        StopServer();
+        CheckServerStatus();
+        StartServer();
+        CheckServerStatus();
+    }
+    
+    void StartLoop()
+    {
+        Timer timer = new Timer(new TimerCallback(_ =>
+        {
+            InvokeAsync(() =>
+            {
+                //UpdateRamUsage();
+                StateHasChanged();
+            });
+
+        }), null, 10000, 10000);
+    }
+}

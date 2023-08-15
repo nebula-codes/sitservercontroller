@@ -1,0 +1,53 @@
+﻿@page "/Servers"
+@using SitServerController.Models
+
+
+<h3>Servers</h3>
+
+
+<MudTable @ref="serverTable" T="Server">
+    <ToolBarContent>
+            <MudText Typo="Typo.h6">Online Player List</MudText>
+            <MudSpacer />
+            <MudTextField @bind-Value="_searchString" Placeholder="Search" Adornment="Adornment.Start" Immediate="true"
+                          AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+        </ToolBarContent>
+    <HeaderContent>
+        <MudTh Style="width: 5em;">Steam ID</MudTh>
+        <MudTh Style="width: 25em;">Display Name</MudTh>
+        <MudTh Style="width: 13em;">Address</MudTh>
+        <MudTh Style="width: 5em;">Health</MudTh>
+        <MudTh Style="width: 6em;">Ping</MudTh>
+        <MudTh Style="width: 10em;">Unspent XP</MudTh>
+        <MudTh Style="width: 15em">Connected Seconds</MudTh>
+        <MudTh Style="width: 40%">Action Buttons</MudTh>
+    </HeaderContent>
+    
+    
+     <PagerContent>
+                <MudTablePager />
+            </PagerContent>
+</MudTable>
+
+<div class="d-flex flex-wrap mt-4">
+    <MudSwitch @bind-Checked="@_hover" Color="Color.Primary">Hover</MudSwitch>
+    <MudSwitch @bind-Checked="@_dense" Color="Color.Secondary">Dense</MudSwitch>
+    <MudSwitch @bind-Checked="@_striped" Color="Color.Tertiary">Striped</MudSwitch>
+    <MudSwitch @bind-Checked="@_bordered" Color="Color.Warning">Bordered</MudSwitch>
+    <MudSpacer />
+    <div style="min-width:200px;">
+        <MudText Inline="true">Selected items: @(_selectedItems==null ? "" : string.Join(", ", _selectedItems.OrderBy(x=>x.Name).Select(x=>x.Name)))</MudText>
+    </div>
+</div>
+
+
+@code {
+    private string _searchString;
+    private MudTable<Server> serverTable;
+    private bool _square = true;
+    private bool _dense = true;
+    private bool _hover = true;
+    private bool _striped = false;
+    private bool _bordered = false;
+    private HashSet<Server> _selectedItems = new HashSet<Server>();
+}

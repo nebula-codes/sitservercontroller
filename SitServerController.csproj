@@ -1,0 +1,257 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MudBlazor" Version="6.8.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="8.0.0-preview.7.23375.6" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="zlib.net">
+        <HintPath>zlib.net.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="GameServer\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="GameServer\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="GameServer\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="GameServer\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="GameServer\MonoBleedingEdge\etc\mono\2.0\machine.config" />
+      <_ContentIncludedByDefault Remove="GameServer\MonoBleedingEdge\etc\mono\2.0\web.config" />
+      <_ContentIncludedByDefault Remove="GameServer\MonoBleedingEdge\etc\mono\4.0\machine.config" />
+      <_ContentIncludedByDefault Remove="GameServer\MonoBleedingEdge\etc\mono\4.0\web.config" />
+      <_ContentIncludedByDefault Remove="GameServer\MonoBleedingEdge\etc\mono\4.5\machine.config" />
+      <_ContentIncludedByDefault Remove="GameServer\MonoBleedingEdge\etc\mono\4.5\web.config" />
+      <_ContentIncludedByDefault Remove="GameServer\NLog\NLog.config" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\Chinese (Simplified).json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\Chinese (Traditional).json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\English.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\French.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\German.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\Italian.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\Japanese.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\Korean.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\Russian.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Launcher\Locales\Spanish.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\airdrop.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\bot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\core.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\gifts.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\health.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\hideout.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\http.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\inraid.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\insurance.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\inventory.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\item.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\locale.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\location.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\lostondeath.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\match.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\playerscav.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\pmcchatresponse.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\quest.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\ragfair.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\repair.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\scavcase.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\seasonalevents.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\trader.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\configs\weather.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\core.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\arenafighter.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\arenafighterevent.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\assault.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bear.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bossbully.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bossgluhar.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bosskilla.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bossknight.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bosskojaniy.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bosssanitar.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bosstagilla.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bosstest.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\bosszryachiy.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\crazyassaultevent.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\cursedassault.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\exusec.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followerbigpipe.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followerbirdeye.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followerbully.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followergluharassault.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followergluharscout.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followergluharsecurity.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followergluharsnipe.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followerkojaniy.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followersanitar.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followertagilla.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followertest.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\followerzryachiy.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\gifter.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\marksman.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\pmcbot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\sectantpriest.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\sectantwarrior.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\test.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\bots\types\usec.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\globals.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\hideout\areas.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\hideout\production.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\hideout\qte.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\hideout\scavcase.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\hideout\settings.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\ch.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\cz.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\en.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\es-mx.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\es.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\fr.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\ge.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\hu.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\it.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\jp.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\kr.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\pl.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\po.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\ru.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\sk.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\global\tu.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\languages.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\ch.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\cz.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\en.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\es-mx.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\es.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\fr.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\ge.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\hu.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\it.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\jp.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\kr.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\pl.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\po.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\ru.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\sk.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\menu\tu.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\cz.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\de.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\en.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\es.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\fr.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\ge.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\hu.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\it.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\jp.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\ko.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\nl.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\pl.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\pt.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\ru.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\sk.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\sv.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\tr.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locales\server\zh.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\bigmap\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\bigmap\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\develop\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\factory4_day\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\factory4_day\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\factory4_night\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\factory4_night\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\hideout\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\interchange\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\interchange\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\laboratory\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\laboratory\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\lighthouse\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\lighthouse\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\privatearea\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\rezervbase\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\rezervbase\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\shoreline\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\shoreline\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\suburbs\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\tarkovstreets\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\tarkovstreets\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\terminal\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\town\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\woods\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\locations\woods\looseLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\loot\staticAmmo.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\loot\staticContainers.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\loot\staticLoot.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\match\metrics.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\server.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\settings.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\ArchivedQuests.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\character.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\customization.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\handbook.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\items.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\prices.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\profiles.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\quests.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\repeatableQuests.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\templates\tarkovMarketItemsDump.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\54cb50c76803fa8b248b4571\assort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\54cb50c76803fa8b248b4571\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\54cb50c76803fa8b248b4571\dialogue.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\54cb50c76803fa8b248b4571\questassort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\54cb57776803fa99248b456e\assort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\54cb57776803fa99248b456e\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\54cb57776803fa99248b456e\dialogue.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\54cb57776803fa99248b456e\questassort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\579dc571d53a0658a154fbec\assort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\579dc571d53a0658a154fbec\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\579dc571d53a0658a154fbec\questassort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\58330581ace78e27b8b10cee\assort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\58330581ace78e27b8b10cee\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\58330581ace78e27b8b10cee\questassort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5935c25fb3acc3127c3d8cd9\assort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5935c25fb3acc3127c3d8cd9\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5935c25fb3acc3127c3d8cd9\questassort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5a7c2eca46aef81a7ca2145d\assort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5a7c2eca46aef81a7ca2145d\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5a7c2eca46aef81a7ca2145d\questassort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5ac3b934156ae10c4430e83c\assort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5ac3b934156ae10c4430e83c\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5ac3b934156ae10c4430e83c\bearsuits.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5ac3b934156ae10c4430e83c\questassort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5ac3b934156ae10c4430e83c\suits.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5ac3b934156ae10c4430e83c\usecsuits.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5c0647fdd443bc2504c2d371\assort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5c0647fdd443bc2504c2d371\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\5c0647fdd443bc2504c2d371\questassort.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\638f541a29ffd1183d187f57\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\Aki_Data\Server\database\traders\ragfair\base.json" />
+      <_ContentIncludedByDefault Remove="GameServer\user\cache\bundles\bundles.json" />
+      <_ContentIncludedByDefault Remove="GameServer\user\cache\jsonCache.json" />
+      <_ContentIncludedByDefault Remove="GameServer\user\cache\modCache.json" />
+      <_ContentIncludedByDefault Remove="GameServer\user\launcher\config.json" />
+      <_ContentIncludedByDefault Remove="GameServer\user\logs\.e54ee9c253164bbba0b9749fc7262cb39479553b-audit.json" />
+      <_ContentIncludedByDefault Remove="GameServer\user\logs\requests\.58177ca65a12dbbfe9859dfd7a8c97882b3d0261-audit.json" />
+      <_ContentIncludedByDefault Remove="GameServer\user\mods\order.json" />
+      <_ContentIncludedByDefault Remove="GameServer\user\profiles\6ff4613a4b34c94c90437872.json" />
+    </ItemGroup>
+
+</Project>

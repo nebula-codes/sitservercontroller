@@ -1,0 +1,76 @@
+﻿@page "/ModSettings"
+
+<MudGrid>
+    <MudItem md="12" xs="12">
+        <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+            <div class="flex-grow-1">
+                <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Custom Bots Settings</MudText>
+                <div class="d-flex align-center my-1">
+                </div>
+            </div>
+        </MudPaper>
+    </MudItem>
+    <MudItem md="4" xs="4">
+        <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+            <div class="flex-grow-1">
+                <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Scav Settings</MudText>
+                <MudCheckBox T="bool">Is Enabled</MudCheckBox>
+                <MudSlider ValueLabel="true" @bind-Value="_scavHearingChance" Step="1" Min="0" Max="100" Color="Color.Info">Hearing Chance: @_scavHearingChance.ToString() %</MudSlider>
+                <MudSlider @bind-Value="_scavHearingMaximumDistance" Step="1" Min="0" Max="500" Color="Color.Info">Hearing Far: @_scavHearingMaximumDistance.ToString() m</MudSlider>
+                <MudSlider @bind-Value="_scavHearingClose" Step="1" Min="0" Max="150" Color="Color.Info">Hearing Close: @_scavHearingClose.ToString() m</MudSlider>
+                <MudSlider @bind-Value="_scavVisionDistance" Step="1" Min="0" Max="1000" Color="Color.Info">Vision Distance: @_scavVisionDistance.ToString() m</MudSlider>
+                <MudSlider @bind-Value="_scavDistanceAccuracy" Step="0.1" Min="0.1" Max="5.0" Color="Color.Info">Accuracy: @_scavDistanceAccuracy.ToString()</MudSlider>
+                <MudSlider @bind-Value="_scavAutoRecoil" Step="0.1" Min="0.1" Max="25.0" Color="Color.Info">Auto Fire Recoil: @_scavAutoRecoil.ToString()</MudSlider>
+                <MudSlider @bind-Value="_scavAimingSpeed" Step="0.1" Min="0.1" Max="1" Color="Color.Info">Aim Speed: @_scavAimingSpeed.ToString()</MudSlider>
+                <MudSlider @bind-Value="_scavRudeChance" Step="1" Min="0" Max="100" Color="Color.Info">Rude Chance: @_scavRudeChance.ToString() %</MudSlider>
+                <div class="d-flex align-center my-1">
+                </div>
+            </div>
+        </MudPaper>
+    </MudItem>
+    <MudItem md="4" xs="4">
+        <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+            <div class="flex-grow-1">
+                <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Boss Settings</MudText>
+                <MudCheckBox T="bool">Is Enabled</MudCheckBox>
+                <MudSlider ValueLabel="true" @bind-Value="_scavHearingChance" Step="0.01" Min="0.00" Max="1.00" Color="Color.Info">Hearing Chance: @_scavHearingChance.ToString() %</MudSlider>
+                <MudSlider @bind-Value="_scavHearingMaximumDistance" Step="1" Min="0" Max="500" Color="Color.Info">Hearing Far: @_scavHearingMaximumDistance.ToString() m</MudSlider>
+                <MudSlider @bind-Value="_scavHearingClose" Step="1" Min="0" Max="150" Color="Color.Info">Hearing Close: @_scavHearingClose.ToString() m</MudSlider>
+                <MudSlider @bind-Value="_scavVisionDistance" Step="1" Min="0" Max="1000" Color="Color.Info">Vision Distance: @_scavVisionDistance.ToString() m</MudSlider>
+                <MudSlider @bind-Value="_scavDistanceAccuracy" Step="0.1" Min="0.1" Max="5.0" Color="Color.Info">Accuracy: @_scavDistanceAccuracy.ToString()</MudSlider>
+                <MudSlider @bind-Value="_scavAutoRecoil" Step="0.1" Min="0.1" Max="25.0" Color="Color.Info">Auto Fire Recoil: @_scavAutoRecoil.ToString()</MudSlider>
+                <div class="d-flex align-center my-1">
+                </div>
+            </div>
+        </MudPaper>
+    </MudItem>
+    <MudItem md="4" xs="4">
+        <MudPaper Class="py-4 px-6 rounded-lg d-flex align-center" Style="background: #191919">
+            <div class="flex-grow-1">
+                <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">PMC Settings</MudText>
+                <MudCheckBox T="bool">Is Enabled</MudCheckBox>
+                <MudSlider ValueLabel="true" @bind-Value="_scavHearingChance" Step="0.01" Min="0.00" Max="1.00" Color="Color.Info">Hearing Chance: @_scavHearingChance.ToString() %</MudSlider>
+                <MudSlider @bind-Value="_scavHearingMaximumDistance" Step="1" Min="0" Max="500" Color="Color.Info">Hearing Far: @_scavHearingMaximumDistance.ToString() m</MudSlider>
+                <MudSlider @bind-Value="_scavHearingClose" Step="1" Min="0" Max="150" Color="Color.Info">Hearing Close: @_scavHearingClose.ToString() m</MudSlider>
+
+                <div class="d-flex align-center my-1">
+                </div>
+            </div>
+        </MudPaper>
+    </MudItem>
+    
+</MudGrid>
+
+
+@code {
+    public double _scavHearingChance = 0.95;
+    private int _scavHearingMaximumDistance = 66;
+    private int _scavHearingClose = 26;
+    private int _scavVisionDistance = 142;
+    private double _scavDistanceAccuracy = 0.9;
+    private double _scavAutoRecoil = 5.0;
+    private double _scavAimingSpeed = 0.2;
+    private int _scavRudeChance = 50;
+    
+    
+}
