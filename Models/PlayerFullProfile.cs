@@ -150,6 +150,209 @@ public class PlayerFullProfile
         };
         return GetKeyValue(key);
     }
+    
+    public float GetLevel0010Kills()
+    {
+        string[] key =
+        {
+            "KilledLevel0010"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetLevel1030Kills()
+    {
+        string[] key =
+        {
+            "KilledLevel1030"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetLevel3050Kills()
+    {
+        string[] key =
+        {
+            "KilledLevel3050"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetLevel5070Kills()
+    {
+        string[] key =
+        {
+            "KilledLevel5070"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetLevel7099Kills()
+    {
+        string[] key =
+        {
+            "KilledLevel7099"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetLevel100Kills()
+    {
+        string[] key =
+        {
+            "KilledLevel100"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledBear()
+    {
+        string[] key =
+        {
+            "KilledBear"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledUsec()
+    {
+        string[] key =
+        {
+            "KilledUsec"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledSavage()
+    {
+        string[] key =
+        {
+            "KilledSavage"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledPmc()
+    {
+        string[] key =
+        {
+            "KilledPmc"
+        };
+        return GetKeyValue(key);
+    }
+
+    public float GetKilledBoss()
+    {
+        string[] key =
+        {
+            "KilledBoss"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithKnife()
+    {
+        string[] key =
+        {
+            "KilledWithKnife"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithPistol()
+    {
+        string[] key =
+        {
+            "KilledWithPistol"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithSmg()
+    {
+        string[] key =
+        {
+            "KilledWithSmg"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithShotgun()
+    {
+        string[] key =
+        {
+            "KilledWithShotgun"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithAssaultRifle()
+    {
+        string[] key =
+        {
+            "KilledWithAssaultRifle"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithAssaultCarbine()
+    {
+        string[] key =
+        {
+            "KilledWithAssaultCarbine"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithGrenadeLauncher()
+    {
+        string[] key =
+        {
+            "KilledWithGrenadeLauncher"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithMachineGun()
+    {
+        string[] key =
+        {
+            "KilledWithMachineGun"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithThrowWeapon()
+    {
+        string[] key =
+        {
+            "KilledWithThrowWeapon"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithMarksmanRifle()
+    {
+        string[] key =
+        {
+            "KilledWithMarksmanRifle"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithSniperRifle()
+    {
+        string[] key =
+        {
+            "KilledWithSniperRifle"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetKilledWithSpecialWeapon()
+    {
+        string[] key =
+        {
+            "KilledWithSpecialWeapon"
+        };
+        return GetKeyValue(key);
+    }
 
     public float GetKeyValue(string[] key)
     {
@@ -163,6 +366,9 @@ public class PlayerFullProfile
 
         return 0;
     }
+    
+    
+    
     
     private bool Compare(string[] firstArray, string[] secondArray)
     {
