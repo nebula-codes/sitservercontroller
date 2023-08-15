@@ -28,6 +28,8 @@
 
     <ItemGroup>
       <Content Remove="GameServer\**" />
+      <Content Include="SitServerController.sln" />
+      <Content Include="SitServerController.sln.DotSettings.user" />
     </ItemGroup>
 
     <ItemGroup>
