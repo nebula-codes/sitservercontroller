@@ -151,6 +151,35 @@ public class PlayerFullProfile
         return GetKeyValue(key);
     }
     
+    public float GetCauseBodyDamage()
+    {
+        string[] key =
+        {
+            "CauseBodyDamage"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetCauseArmorDamage()
+    {
+        string[] key =
+        {
+            "CauseArmorDamage"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetHitCount()
+    {
+        string[] key =
+        {
+            "HitCount"
+        };
+        return GetKeyValue(key);
+    }
+    
+    
+    
     public float GetLevel0010Kills()
     {
         string[] key =

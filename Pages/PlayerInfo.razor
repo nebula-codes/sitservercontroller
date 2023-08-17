@@ -2,192 +2,57 @@
 @using SitServerController.Models
 @using SitServerController.Controllers
 @using SitServerController.Common
-@using System.Reflection
+@using SitServerController.Pages.Components
 
 <MudGrid Class="d-flex pa-4">
     <MudItem md="12" xs="12">
     <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6"  Style="background: #121212; color: #968867" Color="Color.Secondary">
         <MudTabPanel Text="Overall"  Style="background: #121212; ">
             <MudGrid>
-                <MudItem md="12" xs="12">
-                    <MudCard Style="background: #191919">
-                        <MudCardHeader>
-                            <CardHeaderAvatar>
-                                <MudAvatar Color="Color.Secondary"><MudImage Src="/side_bear.png" Style="height: 50%; width: 50%"></MudImage></MudAvatar>
-                            </CardHeaderAvatar>
-                            <CardHeaderContent>
-                                <MudText Typo="Typo.body1">@_fullProfile.info.username</MudText>
-                                <MudText Typo="Typo.body2">@_fullProfile.info.edition</MudText>
-                            </CardHeaderContent>
-                            <CardHeaderActions>
-                                <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Primary"/>
-                            </CardHeaderActions>
-                        </MudCardHeader>
-                        <MudCardContent Class="d-flex pa-4" Style="">
-                            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
-                                <div class="flex-grow-1">
-                                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_raidCount</MudText>
-                                    <div class="d-flex align-center my-1">
-                                    </div>
-                                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Raids</MudText>
-                                </div>
-                            </MudPaper>
-                            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
-                                <div class="flex-grow-1">
-                                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_raidCountSurvived</MudText>
-                                    <div class="d-flex align-center my-1">
-                                    </div>
-                                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Survived</MudText>
-                                </div>
-                            </MudPaper>
-                            
-                            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
-                                <div class="flex-grow-1">
-                                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_survivalRate%</MudText>
-                                    <div class="d-flex align-center my-1">
-                                    </div>
-                                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Survival Rate</MudText>
-                                </div>
-                            </MudPaper>
-                            
-                            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
-                                <div class="flex-grow-1">
-                                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_kills</MudText>
-                                    <div class="d-flex align-center my-1">
-                                    </div>
-                                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Kills</MudText>
-                                </div>
-                            </MudPaper>
-                            
-                            
-                            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
-                                <div class="flex-grow-1">
-                                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_deaths</MudText>
-                                    <div class="d-flex align-center my-1">
-                                    </div>
-                                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">KIA</MudText>
-                                </div>
-                            </MudPaper>
-                            
-                            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
-                                <div class="flex-grow-1">
-                                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_killDeathRatio</MudText>
-                                    <div class="d-flex align-center my-1">
-                                    </div>
-                                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">K/D</MudText>
-                                </div>
-                            </MudPaper>
-                            
-                            
+                
+                <ProfileInformationOverallHeader _player="_player" _fullProfile="_fullProfile"></ProfileInformationOverallHeader>
+                
+                <MudItem md="6" xs="6" Style="padding-top: 2em">
+                    <ProfileInformationCardBase _player="_player" _fullProfile="@_fullProfile" _cardTitle="Common Stats" _icon="@Icons.Material.Filled.Commit">
+                        <ProfileInformationCommonStats _player="_player" _fullProfile="_fullProfile"></ProfileInformationCommonStats>
+                    </ProfileInformationCardBase>
+                </MudItem>
 
 
-                        </MudCardContent>
-                    </MudCard>
+                <MudItem md="6" xs="6" Style="padding-top: 2em">
+                    <ProfileInformationCardBase _player="_player" _fullProfile="@_fullProfile" _cardTitle="Health" _icon="@Icons.Material.Filled.Healing">
+                        <ProfileInformationHealthStats _player="_player" _fullProfile="_fullProfile"></ProfileInformationHealthStats>
+                    </ProfileInformationCardBase>
                 </MudItem>
 
                 <MudItem md="6" xs="6" Style="padding-top: 2em">
                     <MudCard Style="background: #191919">
                         <MudCardHeader>
                             <CardHeaderAvatar>
-                                <MudAvatar Color="Color.Secondary"><MudIcon Icon="@Icons.Material.Filled.Commit"></MudIcon></MudAvatar>
+                                <MudAvatar Color="Color.Secondary"><MudIcon Icon="@Icons.Material.Filled.FrontHand"></MudIcon></MudAvatar>
                             </CardHeaderAvatar>
                             <CardHeaderContent>
-                                <MudText Typo="Typo.body1">Common Stats</MudText>
+                                <MudText Typo="Typo.body1">Looting</MudText>
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent>
-                            <MudText>Registration Date: @_registrationDate</MudText>
-                            <MudText>Total Experience: @_totalExperience</MudText>
-                            <MudText>Survivor Class: @_survivorClass</MudText>
-                            <MudText>Kill Experience: @_killExperience</MudText>
-                            <MudText>Looting Experience: @_lootingExperience</MudText>
-                            <MudText>Longest Survival Streak: @_longestSurvivalStreak</MudText>
-                            <MudText>Current Survival Streak: @_currentSurvivalStreak</MudText>
-                        </MudCardContent>
-                    </MudCard>
-                </MudItem>
-                
-                <MudItem md="6" xs="6" Style="padding-top: 2em">
-                    <MudCard Style="background: #191919">
-                        <MudCardHeader>
-                            <CardHeaderAvatar>
-                                <MudAvatar Color="Color.Secondary"><MudIcon Icon="@Icons.Material.Filled.Healing"></MudIcon></MudAvatar>
-                            </CardHeaderAvatar>
-                            <CardHeaderContent>
-                                <MudText Typo="Typo.body1">Health and physical condition</MudText>
-                            </CardHeaderContent>
-                        </MudCardHeader>
-                        <MudCardContent>
-                            <MudText>Blood Lost: @_bloodLoss</MudText>
-                            <MudText>Limbs Lost: @_limbsLost</MudText>
-                            <MudText>HP Healed: @_hpHealed</MudText>
-                            <MudText>Fractures: @_fractures</MudText>
-                            <MudText>Contusions: @_contusions</MudText>
-                            <MudText>Dehydrations: @_dehydrations</MudText>
-                            <MudText>Exhaustions: @_exhaustions</MudText>
-                        </MudCardContent>
-                    </MudCard>
-                </MudItem>
-                
-                 <MudItem md="6" xs="6" Style="padding-top: 2em">
-                                    <MudCard Style="background: #191919">
-                                        <MudCardHeader>
-                                            <CardHeaderAvatar>
-                                                <MudAvatar Color="Color.Secondary"><MudIcon Icon="@Icons.Material.Filled.FrontHand"></MudIcon></MudAvatar>
-                                            </CardHeaderAvatar>
-                                            <CardHeaderContent>
-                                                <MudText Typo="Typo.body1">Looting</MudText>
-                                            </CardHeaderContent>
-                                        </MudCardHeader>
-                                        <MudCardContent>
 
-                                        </MudCardContent>
-                                    </MudCard>
-                                </MudItem>
-                                
-                <MudItem md="6" xs="6" Style="padding-top: 2em">
-                    <MudCard Style="background: #191919">
-                        <MudCardHeader>
-                            <CardHeaderAvatar>
-                                <MudAvatar Color="Color.Secondary"><MudIcon Icon="@Icons.Material.Filled.Backpack"></MudIcon></MudAvatar>
-                            </CardHeaderAvatar>
-                            <CardHeaderContent>
-                                <MudText Typo="Typo.body1">Combat</MudText>
-                            </CardHeaderContent>
-                        </MudCardHeader>
-                        <MudCardContent>
-                            <MudText>Level 0-10 kills: @_killedLevel0010</MudText>
-                            <MudText>Level 10-30 kills: @_killedLevel1030</MudText>
-                            <MudText>Level 30-50 kills: @_killedLevel3050</MudText>
-                            <MudText>Level 50-70 kills: @_killedLevel5070</MudText>
-                            <MudText>Level 70-99: @_killedLevel7099</MudText>
-                            <MudText>Level 100 kills: @_killedLevel100</MudText>
-                            <MudText>Bear kills: @_killedBear</MudText>
-                            <MudText>Usec kills: @_killedUsec</MudText>
-                            <MudText>Scav kills: @_killSavage</MudText>
-                            <MudText>Pmc kills: @_killPmc</MudText>
-                            <MudText>Boss kills: @_killBoss</MudText>
-                            <MudText>Knife kills: @_killKnife</MudText>
-                            <MudText>Pistol kills: @_killPistol</MudText>
-                            <MudText>SMG kills: @_killSmg</MudText>
-                            <MudText>Shotgun kills: @_killedBear</MudText>
-                            <MudText>Assault rifle kills: @_killAssaultRifle</MudText>
-                            <MudText>Assault carbine kills: @_killAssaultCarbine</MudText>
-                            <MudText>Grenade launcher kills: @_killGrenadeLauncher</MudText>
-                            <MudText>Machine gun kills: @_killMachineGun</MudText>
-                            <MudText>Throwing weapon (Grenade) kills: @_killThrowWeapon</MudText>
-                            <MudText>Marksman rifle kills: @_killMarksmanRifle</MudText>
-                            <MudText>Sniper rifle kills: @_killSniperRifle</MudText>
-                            <MudText>Special weapon kills: @_killSpecialWeapon</MudText>
                         </MudCardContent>
                     </MudCard>
                 </MudItem>
-                
+
+
+                <MudItem md="6" xs="6" Style="padding-top: 2em">
+                    <ProfileInformationCardBase _player="_player" _fullProfile="@_fullProfile" _cardTitle="Combat" _icon="@Icons.Material.Filled.Backpack">
+                        <ProfileInformationCombatStats _player="_player" _fullProfile="_fullProfile"></ProfileInformationCombatStats>
+                    </ProfileInformationCardBase>
+                </MudItem>
+
 
             </MudGrid>
         </MudTabPanel>
         <MudTabPanel Text="Gear"  Style="background: #121212;">
-            <MudText>Health</MudText>
+
         </MudTabPanel>
         <MudTabPanel Text="Health" Style="background: #121212;">
             <MudText>Content Three</MudText>
@@ -208,143 +73,7 @@
     private PlayerInformation[] players;
     private PlayerFullProfile _fullProfile { get; set; }
     private IEnumerable<PlayerInformation> PlayerList = new List<PlayerInformation>();
-
     private PlayerInformation _player;
-
-
-    void GetPlayerInformation()
-    {
-        if (_player.Nickname != "unknown")
-        {
-            GetPlayerOverallInformation();
-            GetPlayerHealthInformation();
-            GetPlayerCommonInformation();
-            GetPlayerCombatInformation();
-        }
-
-    }
-
-    //Common Stats
-    private float _registrationDate { get; set; }
-    private float _totalExperience { get; set; }
-    private string _survivorClass { get; set; }
-    private float _killExperience { get; set; }
-    private float _lootingExperience { get; set; }
-    private float _longestSurvivalStreak { get; set; }
-    private float _currentSurvivalStreak { get; set; }
-    void GetPlayerCommonInformation()
-    {
-        _registrationDate = _fullProfile.GetRegistration();
-        _totalExperience = _fullProfile.GetTotalExperience();
-        _survivorClass = _fullProfile.GetSurvivorClass();
-        _killExperience = _fullProfile.GetKillExperience();
-        _lootingExperience = _fullProfile.GetLootingExperience();
-        _longestSurvivalStreak = _fullProfile.GetLongestWinRate();
-        _currentSurvivalStreak = _fullProfile.GetCurrentWinStreak();
-    }
-    
-    //Medical Information
-    private float _bloodLoss { get; set; }
-    private float _limbsLost { get; set; }
-    private float _hpHealed { get; set; }
-    private float _fractures { get; set; }
-    private float _contusions { get; set; }
-    private float _dehydrations { get; set; }
-    private float _exhaustions { get; set; }
-    void GetPlayerHealthInformation()
-    {
-        _bloodLoss = _fullProfile.GetBloodLoss();
-        _limbsLost = _fullProfile.GetLostLimbs();
-        _hpHealed = _fullProfile.GetHpHealed();
-        _fractures = _fullProfile.GetFractures();
-        _contusions = _fullProfile.GetContusions();
-        _dehydrations = _fullProfile.GetDehydrations();
-        _exhaustions = _fullProfile.GetExhaustions();
-    }
-    
-    //Overall Data
-    private float _raidCount { get; set; }
-    private float _raidCountSurvived { get; set; }
-    private float _kills { get; set; }
-    private float _deaths { get; set; }
-    private float _survivalRate { get; set; }
-    private float _killDeathRatio { get; set; }
-    void GetPlayerOverallInformation()
-    {
-        _raidCount = _fullProfile.GetRaids();
-        _raidCountSurvived = _fullProfile.GetSurvivedRaids();
-        _kills = _fullProfile.GetKills();
-        _deaths = _fullProfile.GetDeaths();
-        if (_raidCount > 0)
-        {
-            _survivalRate = (float)System.Math.Floor(Convert.ToDouble(_raidCountSurvived / _raidCount * 100));
-        }
-        else
-        {
-            _survivalRate = 0;
-        }
-
-        if (_deaths == 0)
-        {
-            _killDeathRatio = _kills;
-        }
-        else
-        {
-            _killDeathRatio = (float)Math.Round(Convert.ToDecimal(_kills / _deaths),2);
-        }
-    }
-    
-    //Combat Data
-    private float _killedLevel0010 { get; set; }
-    private float _killedLevel1030 { get; set; }
-    private float _killedLevel3050 { get; set; }
-    private float _killedLevel5070 { get; set; }
-    private float _killedLevel7099 { get; set; }
-    private float _killedLevel100 { get; set; }
-    private float _killedBear { get; set; }
-    private float _killedUsec { get; set; }
-    private float _killSavage { get; set; }
-    private float _killPmc { get; set; }
-    private float _killBoss { get; set; }
-    private float _killKnife { get; set; }
-    private float _killPistol { get; set; }
-    private float _killSmg { get; set; }
-    private float _killShotgun { get; set; }
-    private float _killAssaultRifle { get; set; }
-    private float _killAssaultCarbine { get; set; }
-    private float _killGrenadeLauncher { get; set; }
-    private float _killMachineGun { get; set; }
-    private float _killThrowWeapon { get; set; }
-    private float _killMarksmanRifle { get; set; }
-    private float _killSniperRifle { get; set; }
-    private float _killSpecialWeapon { get; set; }
-
-    private void GetPlayerCombatInformation()
-    {
-        _killedLevel0010 = _fullProfile.GetLevel0010Kills();
-        _killedLevel1030 = _fullProfile.GetLevel1030Kills();
-        _killedLevel3050 = _fullProfile.GetLevel3050Kills();
-        _killedLevel5070 = _fullProfile.GetLevel5070Kills();
-        _killedLevel7099 = _fullProfile.GetLevel7099Kills();
-        _killedLevel100 = _fullProfile.GetLevel100Kills();
-        _killedBear = _fullProfile.GetKilledBear();
-        _killedUsec = _fullProfile.GetKilledUsec();
-        _killSavage = _fullProfile.GetKilledSavage();
-        _killPmc = _fullProfile.GetKilledPmc();
-        _killBoss = _fullProfile.GetKilledBoss();
-        _killKnife = _fullProfile.GetKilledWithKnife();
-        _killPistol = _fullProfile.GetKilledWithPistol();
-        _killSmg = _fullProfile.GetKilledWithSmg();
-        _killShotgun = _fullProfile.GetKilledWithShotgun();
-        _killAssaultRifle = _fullProfile.GetKilledWithAssaultRifle();
-        _killAssaultCarbine = _fullProfile.GetKilledWithAssaultCarbine();
-        _killGrenadeLauncher = _fullProfile.GetKilledWithGrenadeLauncher();
-        _killMachineGun = _fullProfile.GetKilledWithMachineGun();
-        _killThrowWeapon = _fullProfile.GetKilledWithThrowWeapon();
-        _killMarksmanRifle = _fullProfile.GetKilledWithMarksmanRifle();
-        _killSniperRifle = _fullProfile.GetKilledWithSniperRifle();
-        _killSpecialWeapon = _fullProfile.GetKilledWithSpecialWeapon();
-    }
     
     async Task GetProfiles()
     {
@@ -355,19 +84,14 @@
     protected override async Task OnInitializedAsync()
     {
         GetProfiles();
-
         foreach (var player in PlayerList)
         {
             if (player.Username == username)
             {
                 _player = player;
                 GetUserJsonProfile(player);
-                Console.WriteLine("Getting Raid Count");
-                GetPlayerInformation();
             }
         }
-        
-        
     }
 
     void GetUserJsonProfile(PlayerInformation player)

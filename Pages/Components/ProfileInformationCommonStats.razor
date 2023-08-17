@@ -1,0 +1,43 @@
+﻿@using SitServerController.Models
+
+<MudText>Registration Date: @_registrationDate</MudText>
+<MudText>Total Experience: @_totalExperience</MudText>
+<MudText>Survivor Class: @_survivorClass</MudText>
+<MudText>Kill Experience: @_killExperience</MudText>
+<MudText>Looting Experience: @_lootingExperience</MudText>
+<MudText>Longest Survival Streak: @_longestSurvivalStreak</MudText>
+<MudText>Current Survival Streak: @_currentSurvivalStreak</MudText>
+
+@code {
+    [Parameter] public PlayerFullProfile _fullProfile { get; set; }
+    [Parameter] public PlayerInformation _player { get; set; }
+    
+    
+    //Common Stats
+    private float _registrationDate { get; set; }
+    private float _totalExperience { get; set; }
+    private string _survivorClass { get; set; }
+    private float _killExperience { get; set; }
+    private float _lootingExperience { get; set; }
+    private float _longestSurvivalStreak { get; set; }
+    private float _currentSurvivalStreak { get; set; }
+    void GetPlayerCommonInformation()
+    {
+        _registrationDate = _fullProfile.GetRegistration();
+        _totalExperience = _fullProfile.GetTotalExperience();
+        _survivorClass = _fullProfile.GetSurvivorClass();
+        _killExperience = _fullProfile.GetKillExperience();
+        _lootingExperience = _fullProfile.GetLootingExperience();
+        _longestSurvivalStreak = _fullProfile.GetLongestWinRate();
+        _currentSurvivalStreak = _fullProfile.GetCurrentWinStreak();
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (_player.Nickname != "unknown")
+        {
+            GetPlayerCommonInformation();
+        }
+    }
+
+}

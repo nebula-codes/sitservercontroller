@@ -1,0 +1,117 @@
+﻿@using SitServerController.Models
+<MudItem md="12" xs="12">
+    <MudCard Style="background: #191919">
+        <MudCardHeader>
+            <CardHeaderAvatar>
+                <MudAvatar Color="Color.Secondary"><MudImage Src="/side_bear.png" Style="height: 50%; width: 50%"></MudImage></MudAvatar>
+            </CardHeaderAvatar>
+            <CardHeaderContent>
+                <MudText Typo="Typo.body1">@_fullProfile.info.username</MudText>
+                <MudText Typo="Typo.body2">@_fullProfile.info.edition</MudText>
+            </CardHeaderContent>
+            <CardHeaderActions>
+                <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Primary"/>
+            </CardHeaderActions>
+        </MudCardHeader>
+        <MudCardContent Class="d-flex pa-4" Style="">
+            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_raidCount</MudText>
+                    <div class="d-flex align-center my-1">
+                    </div>
+                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Raids</MudText>
+                </div>
+            </MudPaper>
+            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_raidCountSurvived</MudText>
+                    <div class="d-flex align-center my-1">
+                    </div>
+                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Survived</MudText>
+                </div>
+            </MudPaper>
+                            
+            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_survivalRate%</MudText>
+                    <div class="d-flex align-center my-1">
+                    </div>
+                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Survival Rate</MudText>
+                </div>
+            </MudPaper>
+                            
+            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_kills</MudText>
+                    <div class="d-flex align-center my-1">
+                    </div>
+                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">Kills</MudText>
+                </div>
+            </MudPaper>
+                            
+                            
+            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_deaths</MudText>
+                    <div class="d-flex align-center my-1">
+                    </div>
+                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">KIA</MudText>
+                </div>
+            </MudPaper>
+                            
+            <MudPaper Class="d-flex pa-4" Style="width: 20em;background: #191919">
+                <div class="flex-grow-1">
+                    <MudText Typo="Typo.h4" Class="d-flex justify-center">@_killDeathRatio</MudText>
+                    <div class="d-flex align-center my-1">
+                    </div>
+                    <MudText Color="Color.Primary" Typo="Typo.h6" Class="d-flex justify-center">K/D</MudText>
+                </div>
+            </MudPaper>
+        </MudCardContent>
+    </MudCard>
+</MudItem>
+
+@code {
+    [Parameter] public PlayerFullProfile _fullProfile { get; set; }
+    [Parameter] public PlayerInformation _player { get; set; }
+    
+    //Overall Data
+    private float _raidCount { get; set; }
+    private float _raidCountSurvived { get; set; }
+    private float _kills { get; set; }
+    private float _deaths { get; set; }
+    private float _survivalRate { get; set; }
+    private float _killDeathRatio { get; set; }
+    void GetPlayerOverallInformation()
+    {
+        _raidCount = _fullProfile.GetRaids();
+        _raidCountSurvived = _fullProfile.GetSurvivedRaids();
+        _kills = _fullProfile.GetKills();
+        _deaths = _fullProfile.GetDeaths();
+        if (_raidCount > 0)
+        {
+            _survivalRate = (float)System.Math.Floor(Convert.ToDouble(_raidCountSurvived / _raidCount * 100));
+        }
+        else
+        {
+            _survivalRate = 0;
+        }
+
+        if (_deaths == 0)
+        {
+            _killDeathRatio = _kills;
+        }
+        else
+        {
+            _killDeathRatio = (float)Math.Round(Convert.ToDecimal(_kills / _deaths),2);
+        }
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (_player.Nickname != "unknown")
+        {
+            GetPlayerOverallInformation();
+        }
+    }
+}

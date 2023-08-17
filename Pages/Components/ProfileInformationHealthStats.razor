@@ -1,0 +1,42 @@
+﻿@using SitServerController.Models
+
+<MudText>Blood Lost: @_bloodLoss</MudText>
+<MudText>Limbs Lost: @_limbsLost</MudText>
+<MudText>HP Healed: @_hpHealed</MudText>
+<MudText>Fractures: @_fractures</MudText>
+<MudText>Contusions: @_contusions</MudText>
+<MudText>Dehydrations: @_dehydrations</MudText>
+<MudText>Exhaustions: @_exhaustions</MudText>
+
+
+@code {
+    [Parameter] public PlayerFullProfile _fullProfile { get; set; }
+    [Parameter] public PlayerInformation _player { get; set; }
+    
+    //Medical Information
+    private float _bloodLoss { get; set; }
+    private float _limbsLost { get; set; }
+    private float _hpHealed { get; set; }
+    private float _fractures { get; set; }
+    private float _contusions { get; set; }
+    private float _dehydrations { get; set; }
+    private float _exhaustions { get; set; }
+    void GetPlayerHealthInformation()
+    {
+        _bloodLoss = _fullProfile.GetBloodLoss();
+        _limbsLost = _fullProfile.GetLostLimbs();
+        _hpHealed = _fullProfile.GetHpHealed();
+        _fractures = _fullProfile.GetFractures();
+        _contusions = _fullProfile.GetContusions();
+        _dehydrations = _fullProfile.GetDehydrations();
+        _exhaustions = _fullProfile.GetExhaustions();
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (_player.Nickname != "unknown")
+        {
+            GetPlayerHealthInformation();
+        }
+    }
+}

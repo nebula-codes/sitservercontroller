@@ -1,0 +1,25 @@
+﻿@using SitServerController.Models
+
+<MudCard Style="background: #191919">
+    <MudCardHeader>
+        <CardHeaderAvatar>
+            <MudAvatar Color="Color.Secondary"><MudIcon Icon="@_icon"></MudIcon></MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText Typo="Typo.body1">@_cardTitle</MudText>
+        </CardHeaderContent>
+    </MudCardHeader>
+    <MudCardContent>
+        @ChildContent
+    </MudCardContent>
+</MudCard>
+
+@code {
+    [Parameter] public string _cardTitle { get; set; }
+    [Parameter] public string _icon { get; set; }
+    [Parameter] public PlayerFullProfile _fullProfile { get; set; }
+    [Parameter] public PlayerInformation _player { get; set; }
+    
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+}
