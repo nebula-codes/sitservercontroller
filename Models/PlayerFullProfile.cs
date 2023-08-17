@@ -336,6 +336,7 @@ public class PlayerFullProfile
         return GetKeyValue(key);
     }
     
+    
     public float GetKilledWithSniperRifle()
     {
         string[] key =
