@@ -156,7 +156,29 @@
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent>
-
+                            <MudText>Level 0-10 kills: @_killedLevel0010</MudText>
+                            <MudText>Level 10-30 kills: @_killedLevel1030</MudText>
+                            <MudText>Level 30-50 kills: @_killedLevel3050</MudText>
+                            <MudText>Level 50-70 kills: @_killedLevel5070</MudText>
+                            <MudText>Level 70-99: @_killedLevel7099</MudText>
+                            <MudText>Level 100 kills: @_killedLevel100</MudText>
+                            <MudText>Bear kills: @_killedBear</MudText>
+                            <MudText>Usec kills: @_killedUsec</MudText>
+                            <MudText>Scav kills: @_killSavage</MudText>
+                            <MudText>Pmc kills: @_killPmc</MudText>
+                            <MudText>Boss kills: @_killBoss</MudText>
+                            <MudText>Knife kills: @_killKnife</MudText>
+                            <MudText>Pistol kills: @_killPistol</MudText>
+                            <MudText>SMG kills: @_killSmg</MudText>
+                            <MudText>Shotgun kills: @_killedBear</MudText>
+                            <MudText>Assault rifle kills: @_killAssaultRifle</MudText>
+                            <MudText>Assault carbine kills: @_killAssaultCarbine</MudText>
+                            <MudText>Grenade launcher kills: @_killGrenadeLauncher</MudText>
+                            <MudText>Machine gun kills: @_killMachineGun</MudText>
+                            <MudText>Throwing weapon (Grenade) kills: @_killThrowWeapon</MudText>
+                            <MudText>Marksman rifle kills: @_killMarksmanRifle</MudText>
+                            <MudText>Sniper rifle kills: @_killSniperRifle</MudText>
+                            <MudText>Special weapon kills: @_killSpecialWeapon</MudText>
                         </MudCardContent>
                     </MudCard>
                 </MudItem>
@@ -197,6 +219,7 @@
             GetPlayerOverallInformation();
             GetPlayerHealthInformation();
             GetPlayerCommonInformation();
+            GetPlayerCombatInformation();
         }
 
     }
@@ -269,6 +292,58 @@
         {
             _killDeathRatio = (float)Math.Round(Convert.ToDecimal(_kills / _deaths),2);
         }
+    }
+    
+    //Combat Data
+    private float _killedLevel0010 { get; set; }
+    private float _killedLevel1030 { get; set; }
+    private float _killedLevel3050 { get; set; }
+    private float _killedLevel5070 { get; set; }
+    private float _killedLevel7099 { get; set; }
+    private float _killedLevel100 { get; set; }
+    private float _killedBear { get; set; }
+    private float _killedUsec { get; set; }
+    private float _killSavage { get; set; }
+    private float _killPmc { get; set; }
+    private float _killBoss { get; set; }
+    private float _killKnife { get; set; }
+    private float _killPistol { get; set; }
+    private float _killSmg { get; set; }
+    private float _killShotgun { get; set; }
+    private float _killAssaultRifle { get; set; }
+    private float _killAssaultCarbine { get; set; }
+    private float _killGrenadeLauncher { get; set; }
+    private float _killMachineGun { get; set; }
+    private float _killThrowWeapon { get; set; }
+    private float _killMarksmanRifle { get; set; }
+    private float _killSniperRifle { get; set; }
+    private float _killSpecialWeapon { get; set; }
+
+    private void GetPlayerCombatInformation()
+    {
+        _killedLevel0010 = _fullProfile.GetLevel0010Kills();
+        _killedLevel1030 = _fullProfile.GetLevel1030Kills();
+        _killedLevel3050 = _fullProfile.GetLevel3050Kills();
+        _killedLevel5070 = _fullProfile.GetLevel5070Kills();
+        _killedLevel7099 = _fullProfile.GetLevel7099Kills();
+        _killedLevel100 = _fullProfile.GetLevel100Kills();
+        _killedBear = _fullProfile.GetKilledBear();
+        _killedUsec = _fullProfile.GetKilledUsec();
+        _killSavage = _fullProfile.GetKilledSavage();
+        _killPmc = _fullProfile.GetKilledPmc();
+        _killBoss = _fullProfile.GetKilledBoss();
+        _killKnife = _fullProfile.GetKilledWithKnife();
+        _killPistol = _fullProfile.GetKilledWithPistol();
+        _killSmg = _fullProfile.GetKilledWithSmg();
+        _killShotgun = _fullProfile.GetKilledWithShotgun();
+        _killAssaultRifle = _fullProfile.GetKilledWithAssaultRifle();
+        _killAssaultCarbine = _fullProfile.GetKilledWithAssaultCarbine();
+        _killGrenadeLauncher = _fullProfile.GetKilledWithGrenadeLauncher();
+        _killMachineGun = _fullProfile.GetKilledWithMachineGun();
+        _killThrowWeapon = _fullProfile.GetKilledWithThrowWeapon();
+        _killMarksmanRifle = _fullProfile.GetKilledWithMarksmanRifle();
+        _killSniperRifle = _fullProfile.GetKilledWithSniperRifle();
+        _killSpecialWeapon = _fullProfile.GetKilledWithSpecialWeapon();
     }
     
     async Task GetProfiles()
