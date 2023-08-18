@@ -121,10 +121,43 @@ public enum AccountStatus
                 return Remove();
             });
         }
+        
+        public static async Task<AccountStatus> RemoveAsync(string username, string password)
+        {
+            return await Task.Run(() =>
+            {
+                return Remove(username, password);
+            });
+        }
 
         public static AccountStatus Remove()
         {
             LoginRequestData data = new LoginRequestData(SelectedAccount.username, SelectedAccount.password);
+
+            try
+            {
+                string json = RequestHandler.RequestRemove(data);
+
+                if(Json.Deserialize<bool>(json))
+                {
+                    SelectedAccount = null;
+
+                    return AccountStatus.OK;
+                }
+                else
+                {
+                    return AccountStatus.UpdateFailed;
+                }
+            }
+            catch
+            {
+                return AccountStatus.NoConnection;
+            }
+        }
+        
+        public static AccountStatus Remove(string username, string password)
+        {
+            LoginRequestData data = new LoginRequestData(username, password);
 
             try
             {

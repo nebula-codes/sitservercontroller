@@ -1,4 +1,7 @@
 ﻿@using SitServerController.Models
+@using SitServerController.Controllers
+@inject IDialogService DialogService
+
 <MudItem md="12" xs="12">
     <MudCard Style="background: #191919">
         <MudCardHeader>
@@ -6,11 +9,21 @@
                 <MudAvatar Color="Color.Secondary"><MudImage Src="/side_bear.png" Style="height: 50%; width: 50%"></MudImage></MudAvatar>
             </CardHeaderAvatar>
             <CardHeaderContent>
-                <MudText Typo="Typo.body1">@_fullProfile.info.username</MudText>
-                <MudText Typo="Typo.body2">@_fullProfile.info.edition</MudText>
+                @if (_fullProfile.info.wipe)
+                {
+                    <MudText Typo="Typo.body1" Style="color: red">@_fullProfile.info.username</MudText>
+                    <MudText Typo="Typo.body1" Style="color: red">@_fullProfile.info.edition</MudText>
+                }
+                else
+                {
+                    <MudText Typo="Typo.body1">@_fullProfile.info.username</MudText>
+                    <MudText Typo="Typo.body2">@_fullProfile.info.edition</MudText>
+                }
+
             </CardHeaderContent>
             <CardHeaderActions>
-                <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Primary"/>
+                <MudIconButton @onclick="@(() => WipeUser(_fullProfile))" Icon="@Icons.Material.Filled.CleaningServices" Color="Color.Warning"/>
+                <MudIconButton @onclick="@(() => DeleteUser(_fullProfile))" Icon="@Icons.Material.Filled.Delete" Color="Color.Error"/>
             </CardHeaderActions>
         </MudCardHeader>
         <MudCardContent Class="d-flex pa-4" Style="">
@@ -106,12 +119,61 @@
             _killDeathRatio = (float)Math.Round(Convert.ToDecimal(_kills / _deaths),2);
         }
     }
+
+    private async Task DeleteUser(PlayerFullProfile profile)
+    {
+        var parameters = new DialogParameters<ProfileInformationUserDelete>();
+        parameters.Add(x => x.ContentText, "Do you really want to delete this " + profile.info.username +  "'s profile? This process cannot be undone.");
+        parameters.Add(x => x.ButtonText, "Delete");
+        parameters.Add(x => x.Color, Color.Error);
+
+        var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = await DialogService.ShowAsync<ProfileInformationUserDelete>("Delete Player", parameters, options);
+        var result = await dialog.Result;
+        if (!result.Canceled)
+        {
+    //Wipe user
+            
+            Console.WriteLine("About to remove: " + profile.info.username);
+            LoginRequestData data = new LoginRequestData(profile.info.username, profile.info.password);
+            RequestHandler.RequestRemove(data);
+        }
+    }
+    
+    private async Task WipeUser(PlayerFullProfile profile)
+    {
+        var parameters = new DialogParameters<ProfileInformationUserDelete>();
+        parameters.Add(x => x.ContentText, "Do you really want to wipe this player's data? This process cannot be undone.");
+        parameters.Add(x => x.ButtonText, "Wipe");
+        parameters.Add(x => x.Color, Color.Error);
+
+        var options = new DialogOptions() { CloseButton = true, MaxWidth = MaxWidth.ExtraSmall };
+
+        var dialog = await DialogService.ShowAsync<ProfileInformationUserDelete>("Wipe Player", parameters, options);
+        var result = await dialog.Result;
+
+        if (!result.Canceled)
+        {
+            //Wipe user
+            Console.WriteLine("Account Username to delete: " + AccountManager.SelectedAccount.username);
+            await AccountManager.RemoveAsync();
+        }
+    }
     
     protected override async Task OnInitializedAsync()
     {
         if (_player.Nickname != "unknown")
         {
+            await Login(_fullProfile.info.username, _fullProfile.info.password);
             GetPlayerOverallInformation();
         }
+    }
+
+    private AccountStatus _status { get; set; }
+    async Task Login(string username, string password)
+    {
+        LoginModel loginModel = new LoginModel();
+        _status = await AccountManager.LoginAsync(loginModel);
     }
 }
