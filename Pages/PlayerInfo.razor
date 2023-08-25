@@ -26,19 +26,9 @@
                 </MudItem>
 
                 <MudItem md="6" xs="6" Style="padding-top: 2em">
-                    <MudCard Style="background: #191919">
-                        <MudCardHeader>
-                            <CardHeaderAvatar>
-                                <MudAvatar Color="Color.Secondary"><MudIcon Icon="@Icons.Material.Filled.FrontHand"></MudIcon></MudAvatar>
-                            </CardHeaderAvatar>
-                            <CardHeaderContent>
-                                <MudText Typo="Typo.body1">Looting</MudText>
-                            </CardHeaderContent>
-                        </MudCardHeader>
-                        <MudCardContent>
-
-                        </MudCardContent>
-                    </MudCard>
+                    <ProfileInformationCardBase _player="_player" _fullProfile="@_fullProfile" _cardTitle="Looting" _icon="@Icons.Material.Filled.FrontHand">
+                        <ProfileInformationLootingStats _player="_player" _fullProfile="_fullProfile"></ProfileInformationLootingStats>
+                    </ProfileInformationCardBase>
                 </MudItem>
 
 

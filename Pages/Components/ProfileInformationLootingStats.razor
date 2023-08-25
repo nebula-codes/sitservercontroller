@@ -1,5 +1,66 @@
-﻿<h3>ProfileInformationLootingStats</h3>
+﻿@using SitServerController.Models
+
+<MudText>Roubles found: @_roublesFound</MudText>
+<MudText>Euros found: @_eurosFound</MudText>
+<MudText>USD found: @_usdFound</MudText>
+<MudText>Bodies looted: @_bodiesLooted</MudText>
+<MudText>Safes looted: @_safesLooted</MudText>
+<MudText>Containers looted: @_containersLooted</MudText>
+<MudText>Weapons Looted: @_weaponsLooted</MudText>
+<MudText>Mods looted: @_modLooted</MudText>
+<MudText>Throwable weapons found: @_throwablesLooted</MudText>
+<MudText>Special weapons found: @_specialItemsLooted</MudText>
+<MudText>Provisions found: @_foodLooted</MudText>
+<MudText>Keys found: @_keysLooted</MudText>
+<MudText>Barter goods found: @_bartersLooted</MudText>
+<MudText>Equipment found: @_equipmentLooted</MudText>
+<MudText>Ammunition found: @_ammoLooted</MudText>
 
 @code {
+    [Parameter] public PlayerFullProfile _fullProfile { get; set; }
+    [Parameter] public PlayerInformation _player { get; set; }
     
+    //Medical Information
+    private float _roublesFound { get; set; }
+    private float _eurosFound { get; set; }
+    private float _usdFound { get; set; }
+    private float _bodiesLooted { get; set; }
+    private float _safesLooted { get; set; }
+    private float _containersLooted { get; set; }
+    private float _weaponsLooted { get; set; }
+    private float _modLooted { get; set; }
+    private float _throwablesLooted { get; set; }
+    private float _specialItemsLooted { get; set; }
+    private float _foodLooted { get; set; }
+    private float _keysLooted { get; set; }
+    private float _bartersLooted { get; set; }
+    private float _equipmentLooted { get; set; }
+    private float _ammoLooted { get; set; }
+
+    void GetPlayerHealthInformation()
+    {
+        _roublesFound = _fullProfile.GetRubFound();
+        _eurosFound = _fullProfile.GetEurFound();
+        _usdFound = _fullProfile.GetUsdFound();
+        _bodiesLooted = _fullProfile.GetBodiesLooted();
+        _safesLooted = _fullProfile.GetSafesLooted();
+        _containersLooted = _fullProfile.GetUnlockedSafes();
+        _weaponsLooted = _fullProfile.GetWeaponsLooted();
+        _modLooted = _fullProfile.GetModsLooted();
+        _throwablesLooted = _fullProfile.GetThrowablesLooted();
+        _specialItemsLooted = _fullProfile.GetSpecialItemsLooted();
+        _foodLooted = _fullProfile.GetFoodLooted();
+        _keysLooted = _fullProfile.GetKeysLooted();
+        _bartersLooted = _fullProfile.GetBarterItemsLooted();
+        _equipmentLooted = _fullProfile.GetEquipmentLooted();
+        _ammoLooted = _fullProfile.GetAmmoLooted();
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (_player.Nickname != "unknown")
+        {
+            GetPlayerHealthInformation();
+        }
+    }
 }

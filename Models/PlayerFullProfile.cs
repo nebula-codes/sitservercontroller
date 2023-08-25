@@ -12,7 +12,8 @@ public class PlayerFullProfile
     public Inraid inraid { get; set; }
     public object[] insurance { get; set; }
     public Traderpurchases traderPurchases { get; set; }
-
+    
+    #region Summary
     public float GetRaids()
     {
         string[] key = new[] { "Sessions","Pmc" };
@@ -30,6 +31,10 @@ public class PlayerFullProfile
         return GetKeyValue(key);
     }
     
+
+    #endregion
+    #region Common
+
     public float GetRegistration()
     {
         float date = characters.pmc.Info.RegistrationDate;
@@ -93,7 +98,10 @@ public class PlayerFullProfile
         };
         return GetKeyValue(key);
     }
-    
+
+    #endregion
+    #region Health
+
     public float GetBloodLoss()
     {
         string[] key =
@@ -150,8 +158,11 @@ public class PlayerFullProfile
         };
         return GetKeyValue(key);
     }
-    
-    public float GetCauseBodyDamage()
+
+    #endregion
+    #region Combat
+
+     public float GetCauseBodyDamage()
     {
         string[] key =
         {
@@ -177,8 +188,6 @@ public class PlayerFullProfile
         };
         return GetKeyValue(key);
     }
-    
-    
     
     public float GetLevel0010Kills()
     {
@@ -384,6 +393,141 @@ public class PlayerFullProfile
         return GetKeyValue(key);
     }
 
+    #endregion
+    #region Looting
+    public float GetRubFound()
+    {
+        string[] key =
+        {
+            "Money",
+            "RUB"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetEurFound()
+    {
+        string[] key =
+        {
+            "Money",
+            "EUR"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetUsdFound()
+    {
+        string[] key =
+        {
+            "Money",
+            "USD"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetBodiesLooted()
+    {
+        string[] key =
+        {
+            "BodiesLooted"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetSafesLooted()
+    {
+        string[] key =
+        {
+            "SafeLooted"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetUnlockedSafes()
+    {
+        string[] key =
+        {
+            "LockableContainers"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetWeaponsLooted()
+    {
+        string[] key =
+        {
+            "Weapons"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetModsLooted()
+    {
+        string[] key =
+        {
+            "Mods"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetThrowablesLooted()
+    {
+        string[] key =
+        {
+            "ThrowWeapons"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetSpecialItemsLooted()
+    {
+        string[] key =
+        {
+            "SpecialItems"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetFoodLooted()
+    {
+        string[] key =
+        {
+            "FoodDrinks"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetKeysLooted()
+    {
+        string[] key =
+        {
+            "Keys"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetBarterItemsLooted()
+    {
+        string[] key =
+        {
+            "BartItems"
+        };
+        return GetKeyValue(key);
+    }
+    
+    public float GetEquipmentLooted()
+    {
+        string[] key =
+        {
+            "Equipments"
+        };
+        return GetKeyValue(key);
+    }
+    public float GetAmmoLooted()
+    {
+        string[] key =
+        {
+            "Ammunitions"
+        };
+        return GetKeyValue(key);
+    }
+    
+    #endregion
+
     public float GetKeyValue(string[] key)
     {
         foreach (var value in characters.pmc.Stats.OverallCounters.Items)
@@ -393,7 +537,6 @@ public class PlayerFullProfile
                 return value.Value;
             }
         }
-
         return 0;
     }
     
