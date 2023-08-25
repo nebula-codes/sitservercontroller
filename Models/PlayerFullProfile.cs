@@ -43,8 +43,15 @@ public class PlayerFullProfile
     
     public float GetTotalExperience()
     {
-        float exp = characters.pmc.Info.Experience;
-        return exp;
+        try
+        {
+            float exp = characters.pmc.Info.Experience;
+            return exp;
+        }
+        catch
+        {
+            return 0;
+        }
     }
     
     public string GetSurvivorClass()
@@ -54,19 +61,34 @@ public class PlayerFullProfile
     
     public float GetKillExperience()
     {
-        string[] key = new[] { "ExpKill" };
-        return GetKeyValue(key);
+        try
+        {
+            string[] key = { "ExpKill" };
+            return GetKeyValue(key);
+        }
+        catch
+        {
+            return 0;
+        }
+        
     }
     
     public float GetLootingExperience()
     {
-        string[] key = new[] { "ExpLooting" };
-        return GetKeyValue(key);
+        try
+        {
+            string[] key = { "ExpLooting" };
+            return GetKeyValue(key);
+        }
+        catch
+        {
+            return 0;
+        }
     }
     
     public float GetLongestWinRate()
     {
-        string[] key = new[] { "LongestWinStreak",
+        string[] key = { "LongestWinStreak",
             "Pmc" };
         return GetKeyValue(key);
     }
@@ -530,14 +552,22 @@ public class PlayerFullProfile
 
     public float GetKeyValue(string[] key)
     {
-        foreach (var value in characters.pmc.Stats.OverallCounters.Items)
+        try
         {
-            if (Compare(key, value.Key))
+            foreach (var value in characters.pmc.Stats.OverallCounters.Items)
             {
-                return value.Value;
+                if (Compare(key, value.Key))
+                {
+                    return value.Value;
+                }
             }
+
+            return 0;
         }
-        return 0;
+        catch
+        {
+            return 0;
+        }
     }
     
     
