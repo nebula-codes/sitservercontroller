@@ -3,7 +3,11 @@ SIT Game Server Controller
 
 Website made to monitor and control your SIT game server
 
+**Dependencies:**
+- .net 7 runtime (Will not run without it)
+
 Installation Process:
+
 
 - Unzip release folder
 - Add your current game server files in the GameServer folder
