@@ -1,0 +1,51 @@
+﻿@using SitServerController.Models
+@using SitServerController.Controllers
+
+<h3>PlayerInformationTraders</h3>
+
+@foreach (var trader in _traders)
+{
+    <MudText>@trader.name</MudText>
+    <MudImage Src="@trader.imagePath"></MudImage>
+}
+
+@code {
+    [Parameter] public PlayerFullProfile _fullProfile { get; set; }
+    [Parameter] public PlayerInformation _player { get; set; }
+
+    private string _praporId = "54cb50c76803fa8b248b4571";
+
+
+
+    private Trader[] _traders = { };
+    async Task<Trader[]> GetTradersInformation()
+    {
+        TraderController traderController = new(_fullProfile);
+        Trader[] traders = {};
+        try
+        {
+            Trader anastasia = await traderController.GetAnastasiaInformation();
+            traders.Append(anastasia);
+            return traders;
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+        return traders;
+    }
+    
+    async void PopulateTraders()
+    {
+        _traders = await GetTradersInformation();
+    }
+    
+    protected override async Task OnInitializedAsync()
+    {
+        if (_player.Nickname != "unknown")
+        {
+            PopulateTraders();
+        }
+    }
+}

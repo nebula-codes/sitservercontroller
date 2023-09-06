@@ -5,7 +5,7 @@ public struct RegisterRequestData
     public string username;
     public string password;
     public string edition;
-
+    
     public RegisterRequestData(string username, string password, string edition)
     {
         this.username = username;
@@ -13,3 +13,4 @@ public struct RegisterRequestData
         this.edition = edition;
     }
 }
+

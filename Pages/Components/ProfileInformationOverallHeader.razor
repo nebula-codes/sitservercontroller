@@ -23,7 +23,7 @@
             </CardHeaderContent>
             <CardHeaderActions>
                 <MudIconButton @onclick="@(() => WipeUser(_fullProfile))" Icon="@Icons.Material.Filled.CleaningServices" Color="Color.Warning"/>
-                <MudIconButton @onclick="@(() => DeleteUser(_fullProfile))" Icon="@Icons.Material.Filled.Delete" Color="Color.Error"/>
+                <MudIconButton Disabled="true" @onclick="@(() => DeleteUser(_fullProfile))" Icon="@Icons.Material.Filled.Delete" Color="Color.Error"/>
             </CardHeaderActions>
         </MudCardHeader>
         <MudCardContent Class="d-flex pa-4" Style="">

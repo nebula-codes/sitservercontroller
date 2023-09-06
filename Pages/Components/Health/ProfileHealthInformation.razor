@@ -1,5 +1,11 @@
-﻿<h3>ProfileHealthInformation</h3>
+﻿@using SitServerController.Models
+<h3>ProfileHealthInformation</h3>
 
 @code {
+    [Parameter] public PlayerFullProfile _fullProfile { get; set; }
+    [Parameter] public PlayerInformation _player { get; set; }
+    
+    
+    
     
 }

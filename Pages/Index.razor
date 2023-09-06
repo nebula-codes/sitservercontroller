@@ -230,6 +230,7 @@
         {
             if (_serverStatus == false)
             {
+                Console.WriteLine(Environment.CurrentDirectory);
                 var path = Environment.CurrentDirectory + "\\GameServer\\Lol";
                 Process proc = new();
                 proc.StartInfo.UseShellExecute = true;

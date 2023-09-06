@@ -1,4 +1,6 @@
-﻿namespace SitServerController.Models;
+﻿using Newtonsoft.Json;
+
+namespace SitServerController.Models;
 
 public class PlayerFullProfile
 {
@@ -1187,6 +1189,64 @@ public class Tradersinfo
     public Cooptrader coopTrader { get; set; }
     public Usectrader usecTrader { get; set; }
     public Beartrader bearTrader { get; set; }
+    public Svetlana svetlana { get; set; }
+    public Anastasia anastasia { get; set; }
+    public MFACSHOP mfacshop { get; set; }
+    public Jeovani jeovani { get; set; }
+    
+    
+}
+
+public class Trader
+{
+    public bool disabled { get; set; }
+    public float loyaltyLevel { get; set; }
+    public float salesSum { get; set; }
+    public float standing { get; set; }
+    public float nextResupply { get; set; }
+    public bool unlocked { get; set; }
+    public string name { get; set; }
+    public string imagePath { get; set; }
+}
+
+public class MFACSHOP
+{
+    public bool disabled { get; set; }
+    public int loyaltyLevel { get; set; }
+    public int salesSum { get; set; }
+    public float standing { get; set; }
+    public int nextResupply { get; set; }
+    public bool unlocked { get; set; }
+}
+
+public class Anastasia
+{
+    public bool disabled { get; set; }
+    public int loyaltyLevel { get; set; }
+    public int salesSum { get; set; }
+    public float standing { get; set; }
+    public int nextResupply { get; set; }
+    public bool unlocked { get; set; }
+}
+
+public class Jeovani
+{
+    public bool disabled { get; set; }
+    public int loyaltyLevel { get; set; }
+    public int salesSum { get; set; }
+    public float standing { get; set; }
+    public int nextResupply { get; set; }
+    public bool unlocked { get; set; }
+}
+
+public class Svetlana
+{
+    public bool disabled { get; set; }
+    public int loyaltyLevel { get; set; }
+    public int salesSum { get; set; }
+    public float standing { get; set; }
+    public int nextResupply { get; set; }
+    public bool unlocked { get; set; }
 }
 
 public class _54Cb50c76803fa8b248b4571

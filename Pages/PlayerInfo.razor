@@ -3,6 +3,7 @@
 @using SitServerController.Controllers
 @using SitServerController.Common
 @using SitServerController.Pages.Components
+@using SitServerController.Pages.Components.Traders
 
 <MudGrid Class="d-flex pa-4">
     <MudItem md="12" xs="12">
@@ -50,8 +51,10 @@
         <MudTabPanel Text="Skills" Style="background: #121212;">
             <MudText>Content Disabled</MudText>
         </MudTabPanel>
-        <MudTabPanel Text="Tasks" Style="background: #121212;">
-            <MudText>Content Disabled</MudText>
+        <MudTabPanel Text="Traders" Style="background: #121212;">
+            <PlayerInformationTraders _player="_player" _fullProfile="_fullProfile">
+                
+            </PlayerInformationTraders>
         </MudTabPanel>
     </MudTabs>
     </MudItem>
